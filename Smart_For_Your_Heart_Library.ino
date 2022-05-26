@@ -1,3 +1,11 @@
+const int buttonPin = 26;
+
+int buttonState = 0;
+int button = 0;
+
+
+//set up buttons
+
 #include <FastLED.h>
 
 #define LED_PIN     53
@@ -40,6 +48,8 @@ void setup() {
   Serial.begin(9600);
   lcd.begin(84, 48);
 
+  pinMode(buttonPin, INPUT);
+
   delay( 500 ); // power-up safety delay
   FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
   FastLED.setBrightness(  BRIGHTNESS );
@@ -67,9 +77,9 @@ void setup() {
   }
 
   Serial.println("Motion!");
- lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Let's see whatyour heart hasto say...");
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Let's see whatyour heart hasto say...");
   //delay(6000);
   IdlePalette();
 }
@@ -97,35 +107,35 @@ void loop() {
     if (myBPM <= 30) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are confident!");
+      lcd.print("You are       confident!");
       PaletteUpTo30();
-      currentBlending = LINEARBLEND; 
+      currentBlending = LINEARBLEND;
     }
     if (myBPM > 30 && myBPM <= 40) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are beautiful!");
+      lcd.print("You are       beautiful!");
       PaletteUpTo40();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 40 && myBPM <= 50) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are loved!");
+      lcd.print("You are       loved!");
       PaletteUpTo50();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 50 && myBPM <= 60) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are succesful!");
+      lcd.print("You are       succesful!");
       PaletteUpTo60();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 60 && myBPM <= 70 && myBPM != 69) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are powerful!");
+      lcd.print("You are       powerful!");
       PaletteUpTo70();
       currentBlending = LINEARBLEND;
     }
@@ -139,124 +149,134 @@ void loop() {
     if (myBPM > 70 && myBPM <= 80) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are needed!");
+      lcd.print("You are       needed!");
       PaletteUpTo80();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 80 && myBPM <= 90) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are an unstoppable force of nature!");
+      lcd.print("You are an    unstoppable   force of      nature!");
       PaletteUpTo90();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 90 && myBPM <= 100) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are a living, breathing example of motivation!");
+      lcd.print("You are a     living,       breathing     example of    motivation!");
       PaletteUpTo100();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 100 && myBPM <= 110) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are living with abundance!");
+      lcd.print("You are       living with   abundance!");
       PaletteUpTo110();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 110 && myBPM <= 120) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are worthy!");
+      lcd.print("You are       worthy!");
       PaletteUpTo120();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 120 && myBPM <= 130) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are inspiring people through your work!");
+      lcd.print("You are       inspiring     people throughyour work!");
       PaletteUpTo130();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 130 && myBPM <= 140) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("Today is a phenomenal day!");
+      lcd.print("Today is a    phenomenal    day!");
       PaletteUpTo140();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 140 && myBPM <= 150) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are filled with focus!");
+      lcd.print("You are filledwith focus!");
       PaletteUpTo150();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 150 && myBPM <= 160) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are not pushed by your problems; You are led by your dreams!");
+      lcd.print("You are not   pushed by yourproblems; You are led by    your dreams!");
       PaletteUpTo160();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 160 && myBPM <= 170) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are independent and self-sufficient!");
+      lcd.print("You are calm, patient and atpeace!");
       PaletteUpTo170();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 170 && myBPM <= 180) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You can be whatever you want to be!");
+      lcd.print("You can be    whatever you  want to be!");
       PaletteUpTo180();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 180 && myBPM <= 190) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are intelligent and focused!");
+      lcd.print("You are       intelligent   and focused!");
       PaletteUpTo190();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 190 && myBPM <= 200) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("Each and every day, You are getting closer to achieving your goals!");
+      lcd.print("Each and everyday, You are  getting closerto achieving  your goals!");
       PaletteUpTo200();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 200 && myBPM <= 210) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are constantly growing and evolving into a better person!");
+      lcd.print("You are       constantly    growing and   evolving into a better      person!");
       PaletteUpTo210();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 210 && myBPM <= 220) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("You are healing and strengthening every day!");
+      lcd.print("You are       healing and   strengthening every day!");
       PaletteUpTo220();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 220 && myBPM <= 230) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("Your soul radiates from the inside and warms the souls of others!");
+      lcd.print("Your soul     radiates from the inside andwarms the     souls of      others!");
       PaletteUpTo230();
       currentBlending = LINEARBLEND;
     }
     if (myBPM > 230 && myBPM <= 240) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("Happiness is a choice, and today You choose to be happy!");
+      lcd.print("Happiness is achoice, and   today You     choose to be  happy!");
       PaletteUpTo240();
       currentBlending = LINEARBLEND;
     }
 
   }
+
+/*  buttonState = digitalRead(buttonPin);
+  if (buttonState == HIGH) {
+    Serial.println("Button");
+    button++;
+  }
+  if (buttonn % 2 == 0){IdlePalette(); Serial.println("OFF");} 
+  else {ChangePalettePeriodically(); Serial.println("ON");}
+  */
+  
 
   delay(1);
 }
@@ -275,34 +295,122 @@ void FillLEDsFromPaletteColors( uint8_t colorIndex)
 
 void ChangePalettePeriodically()
 {
-    uint8_t secondHand = (millis() / 1000) % 110;
-    static uint8_t lastSecond = 110;
-    
-    if( lastSecond != secondHand) {
-        lastSecond = secondHand;
-        if( secondHand ==  0)  { PaletteUpTo30();  currentBlending = LINEARBLEND;  Serial.println(30);}
-        if( secondHand ==  5)  { PaletteUpTo40();      currentBlending = LINEARBLEND;  Serial.println(40);}
-        if( secondHand == 10)  { PaletteUpTo50();      currentBlending = LINEARBLEND;  Serial.println(50);}
-        if( secondHand == 15)  { PaletteUpTo60();      currentBlending = LINEARBLEND;  Serial.println(60);}
-        if( secondHand == 20)  { PaletteUpTo70();      currentBlending = LINEARBLEND;  Serial.println(70);}
-        if( secondHand == 25)  { PaletteUpTo80();      currentBlending = LINEARBLEND;  Serial.println(80);}
-        if( secondHand == 30)  { PaletteUpTo90();      currentBlending = LINEARBLEND;  Serial.println(90);}
-        if( secondHand == 35)  { PaletteUpTo100();     currentBlending = LINEARBLEND;  Serial.println(100);}
-        if( secondHand == 40)  { PaletteUpTo110();     currentBlending = LINEARBLEND;  Serial.println(110);}
-        if( secondHand == 45)  { PaletteUpTo120();     currentBlending = LINEARBLEND;  Serial.println(120);}
-        if( secondHand == 50)  { PaletteUpTo130();     currentBlending = LINEARBLEND;  Serial.println(130);}
-        if( secondHand == 55)  { PaletteUpTo140();     currentBlending = LINEARBLEND;  Serial.println(140);}
-        if( secondHand == 60)  { PaletteUpTo150();     currentBlending = LINEARBLEND;  Serial.println(150);}
-        if( secondHand == 65)  { PaletteUpTo160();     currentBlending = LINEARBLEND;  Serial.println(160);}
-        if( secondHand == 70)  { PaletteUpTo170();     currentBlending = LINEARBLEND;  Serial.println(170);}
-        if( secondHand == 75)  { PaletteUpTo180();     currentBlending = LINEARBLEND;  Serial.println(180);}
-        if( secondHand == 80)  { PaletteUpTo190();     currentBlending = LINEARBLEND;  Serial.println(190);}
-        if( secondHand == 85)  { PaletteUpTo200();     currentBlending = LINEARBLEND;  Serial.println(200);}
-        if( secondHand == 90)  { PaletteUpTo210();     currentBlending = LINEARBLEND;  Serial.println(210);}
-        if( secondHand == 95)  { PaletteUpTo220();     currentBlending = LINEARBLEND;  Serial.println(220);}
-        if( secondHand == 100) { PaletteUpTo230();     currentBlending = LINEARBLEND;  Serial.println(230);}
-        if( secondHand == 105) { PaletteUpTo240();     currentBlending = LINEARBLEND;  Serial.println(240);}
+  uint8_t secondHand = (millis() / 1000) % 110;
+  static uint8_t lastSecond = 110;
+
+  if ( lastSecond != secondHand) {
+    lastSecond = secondHand;
+    if ( secondHand ==  0)  {
+      PaletteUpTo30();
+      currentBlending = LINEARBLEND;
+      Serial.println(30);
     }
+    if ( secondHand ==  5)  {
+      PaletteUpTo40();
+      currentBlending = LINEARBLEND;
+      Serial.println(40);
+    }
+    if ( secondHand == 10)  {
+      PaletteUpTo50();
+      currentBlending = LINEARBLEND;
+      Serial.println(50);
+    }
+    if ( secondHand == 15)  {
+      PaletteUpTo60();
+      currentBlending = LINEARBLEND;
+      Serial.println(60);
+    }
+    if ( secondHand == 20)  {
+      PaletteUpTo70();
+      currentBlending = LINEARBLEND;
+      Serial.println(70);
+    }
+    if ( secondHand == 25)  {
+      PaletteUpTo80();
+      currentBlending = LINEARBLEND;
+      Serial.println(80);
+    }
+    if ( secondHand == 30)  {
+      PaletteUpTo90();
+      currentBlending = LINEARBLEND;
+      Serial.println(90);
+    }
+    if ( secondHand == 35)  {
+      PaletteUpTo100();
+      currentBlending = LINEARBLEND;
+      Serial.println(100);
+    }
+    if ( secondHand == 40)  {
+      PaletteUpTo110();
+      currentBlending = LINEARBLEND;
+      Serial.println(110);
+    }
+    if ( secondHand == 45)  {
+      PaletteUpTo120();
+      currentBlending = LINEARBLEND;
+      Serial.println(120);
+    }
+    if ( secondHand == 50)  {
+      PaletteUpTo130();
+      currentBlending = LINEARBLEND;
+      Serial.println(130);
+    }
+    if ( secondHand == 55)  {
+      PaletteUpTo140();
+      currentBlending = LINEARBLEND;
+      Serial.println(140);
+    }
+    if ( secondHand == 60)  {
+      PaletteUpTo150();
+      currentBlending = LINEARBLEND;
+      Serial.println(150);
+    }
+    if ( secondHand == 65)  {
+      PaletteUpTo160();
+      currentBlending = LINEARBLEND;
+      Serial.println(160);
+    }
+    if ( secondHand == 70)  {
+      PaletteUpTo170();
+      currentBlending = LINEARBLEND;
+      Serial.println(170);
+    }
+    if ( secondHand == 75)  {
+      PaletteUpTo180();
+      currentBlending = LINEARBLEND;
+      Serial.println(180);
+    }
+    if ( secondHand == 80)  {
+      PaletteUpTo190();
+      currentBlending = LINEARBLEND;
+      Serial.println(190);
+    }
+    if ( secondHand == 85)  {
+      PaletteUpTo200();
+      currentBlending = LINEARBLEND;
+      Serial.println(200);
+    }
+    if ( secondHand == 90)  {
+      PaletteUpTo210();
+      currentBlending = LINEARBLEND;
+      Serial.println(210);
+    }
+    if ( secondHand == 95)  {
+      PaletteUpTo220();
+      currentBlending = LINEARBLEND;
+      Serial.println(220);
+    }
+    if ( secondHand == 100) {
+      PaletteUpTo230();
+      currentBlending = LINEARBLEND;
+      Serial.println(230);
+    }
+    if ( secondHand == 105) {
+      PaletteUpTo240();
+      currentBlending = LINEARBLEND;
+      Serial.println(240);
+    }
+  }
 }
 
 
@@ -376,10 +484,10 @@ void PaletteUpTo50()
 
 void PaletteUpTo60()
 {
-  CRGB color1 = CHSV(255,246,45);
-  CRGB color2 = CHSV(255,149,77);
-  CRGB color3 = CHSV(85,255,182);
-  CRGB color4 = CHSV(29,192,255);
+  CRGB color1 = CHSV(255, 246, 45);
+  CRGB color2 = CHSV(255, 149, 77);
+  CRGB color3 = CHSV(85, 255, 182);
+  CRGB color4 = CHSV(29, 192, 255);
 
   currentPalette = CRGBPalette16(
                      color1,  color1,  color3,  color3,
@@ -390,10 +498,10 @@ void PaletteUpTo60()
 
 void PaletteUpTo70()
 {
-  CRGB color1 = CHSV(15,190,205);
-  CRGB color2 = CHSV(204,131,255);
-  CRGB color3 = CHSV(46,200,204);
-  CRGB color4 = CHSV(255,140,221);
+  CRGB color1 = CHSV(15, 190, 205);
+  CRGB color2 = CHSV(204, 131, 255);
+  CRGB color3 = CHSV(46, 200, 204);
+  CRGB color4 = CHSV(255, 140, 221);
 
   currentPalette = CRGBPalette16(
                      color1,  color1,  color3,  color3,
@@ -418,10 +526,10 @@ void PaletteUpTo80()
 
 void PaletteUpTo90()
 {
-  CRGB color1 = CHSV(3,190,227);
-  CRGB color2 = CHSV(194,21,229);
-  CRGB color3 = CHSV(0,54,18);
-  CRGB color4 = CHSV(182,145,176);
+  CRGB color1 = CHSV(3, 190, 227);
+  CRGB color2 = CHSV(194, 21, 229);
+  CRGB color3 = CHSV(0, 54, 18);
+  CRGB color4 = CHSV(182, 145, 176);
 
   currentPalette = CRGBPalette16(
                      color1,  color1,  color3,  color3,
@@ -431,10 +539,10 @@ void PaletteUpTo90()
 }
 
 void PaletteUpTo100()
-{ CRGB color1 = CHSV(232,112,156);
-  CRGB color2 = CHSV(217,102,209);
-  CRGB color3 = CHSV(147,227,129);
-  CRGB color4 = CHSV(99,208,156);
+{ CRGB color1 = CHSV(232, 112, 156);
+  CRGB color2 = CHSV(217, 102, 209);
+  CRGB color3 = CHSV(147, 227, 129);
+  CRGB color4 = CHSV(99, 208, 156);
 
   currentPalette = CRGBPalette16(
                      color1,  color1,  color3,  color3,
@@ -591,10 +699,10 @@ void PaletteUpTo210()
 }
 void PaletteUpTo220()
 {
-  CRGB color1 = CHSV(319,249,230);
-  CRGB color2 = CHSV(289,210,249);
-  CRGB color3 = CHSV(267,255,249);
-  CRGB color4 = CHSV(267,160,249);
+  CRGB color1 = CHSV(319, 249, 230);
+  CRGB color2 = CHSV(289, 210, 249);
+  CRGB color3 = CHSV(267, 255, 249);
+  CRGB color4 = CHSV(267, 160, 249);
   CRGB color5 = CRGB::Gold;
 
   currentPalette = CRGBPalette16(
