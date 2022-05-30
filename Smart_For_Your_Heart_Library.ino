@@ -1,11 +1,3 @@
-const int buttonPin = 26;
-
-int buttonState = 0;
-int button = 0;
-
-
-//set up buttons
-
 #include <FastLED.h>
 
 #define LED_PIN     53
@@ -47,8 +39,6 @@ PulseSensorPlayground pulseSensor;
 void setup() {
   Serial.begin(9600);
   lcd.begin(84, 48);
-
-  pinMode(buttonPin, INPUT);
 
   delay( 500 ); // power-up safety delay
   FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
@@ -267,17 +257,6 @@ void loop() {
     }
 
   }
-
-/*  buttonState = digitalRead(buttonPin);
-  if (buttonState == HIGH) {
-    Serial.println("Button");
-    button++;
-  }
-  if (buttonn % 2 == 0){IdlePalette(); Serial.println("OFF");} 
-  else {ChangePalettePeriodically(); Serial.println("ON");}
-  */
-  
-
   delay(1);
 }
 
