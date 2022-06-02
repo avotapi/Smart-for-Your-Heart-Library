@@ -54,7 +54,7 @@ void setup() {
     Serial.println("We created a pulseSensor Object !");
     lcd.clear();
     lcd.setCursor(0, 0);
-    //lcd.print("Let's see whatyour heart hasto say...");
+    //staring the heart sensor
   }
 
   while (digitalRead(pirPin) == LOW)
@@ -64,19 +64,19 @@ void setup() {
     lcd.setCursor(0, 0);
     lcd.print("Anyone here?");
     //lcd.clear();
-  }
+  } //while the motion sensor is not activated, the lights stay out
 
   Serial.println("Motion!");
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Let's see whatyour heart hasto say...");
   //delay(6000);
-  IdlePalette();
+  IdlePalette(); // once the motion sensor has been triggered, start idle BnW animation
 }
 
 void loop() {
 
-  //ChangePalettePeriodically();
+  //ChangePalettePeriodically(); //for testing all animations together
 
 
   static uint8_t startIndex = 0;
@@ -94,8 +94,8 @@ void loop() {
     Serial.print("BPM: ");
     Serial.println(myBPM);
 
-    if (myBPM <= 30) {
-      lcd.clear();
+    if (myBPM <= 30) {                                   //checking what reading the heart sensor gets
+      lcd.clear();                                       //changing animation based on the value
       lcd.setCursor(0, 0);
       lcd.print("You are       confident!");
       PaletteUpTo30();
@@ -129,7 +129,7 @@ void loop() {
       PaletteUpTo70();
       currentBlending = LINEARBLEND;
     }
-    if (myBPM == 69) {
+    if (myBPM == 69) {                                        //secret feature!
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("Nice ;)");
@@ -277,121 +277,34 @@ void ChangePalettePeriodically()
   uint8_t secondHand = (millis() / 1000) % 110;
   static uint8_t lastSecond = 110;
 
-  if ( lastSecond != secondHand) {
-    lastSecond = secondHand;
-    if ( secondHand ==  0)  {
-      PaletteUpTo30();
-      currentBlending = LINEARBLEND;
-      Serial.println(30);
-    }
-    if ( secondHand ==  5)  {
-      PaletteUpTo40();
-      currentBlending = LINEARBLEND;
-      Serial.println(40);
-    }
-    if ( secondHand == 10)  {
-      PaletteUpTo50();
-      currentBlending = LINEARBLEND;
-      Serial.println(50);
-    }
-    if ( secondHand == 15)  {
-      PaletteUpTo60();
-      currentBlending = LINEARBLEND;
-      Serial.println(60);
-    }
-    if ( secondHand == 20)  {
-      PaletteUpTo70();
-      currentBlending = LINEARBLEND;
-      Serial.println(70);
-    }
-    if ( secondHand == 25)  {
-      PaletteUpTo80();
-      currentBlending = LINEARBLEND;
-      Serial.println(80);
-    }
-    if ( secondHand == 30)  {
-      PaletteUpTo90();
-      currentBlending = LINEARBLEND;
-      Serial.println(90);
-    }
-    if ( secondHand == 35)  {
-      PaletteUpTo100();
-      currentBlending = LINEARBLEND;
-      Serial.println(100);
-    }
-    if ( secondHand == 40)  {
-      PaletteUpTo110();
-      currentBlending = LINEARBLEND;
-      Serial.println(110);
-    }
-    if ( secondHand == 45)  {
-      PaletteUpTo120();
-      currentBlending = LINEARBLEND;
-      Serial.println(120);
-    }
-    if ( secondHand == 50)  {
-      PaletteUpTo130();
-      currentBlending = LINEARBLEND;
-      Serial.println(130);
-    }
-    if ( secondHand == 55)  {
-      PaletteUpTo140();
-      currentBlending = LINEARBLEND;
-      Serial.println(140);
-    }
-    if ( secondHand == 60)  {
-      PaletteUpTo150();
-      currentBlending = LINEARBLEND;
-      Serial.println(150);
-    }
-    if ( secondHand == 65)  {
-      PaletteUpTo160();
-      currentBlending = LINEARBLEND;
-      Serial.println(160);
-    }
-    if ( secondHand == 70)  {
-      PaletteUpTo170();
-      currentBlending = LINEARBLEND;
-      Serial.println(170);
-    }
-    if ( secondHand == 75)  {
-      PaletteUpTo180();
-      currentBlending = LINEARBLEND;
-      Serial.println(180);
-    }
-    if ( secondHand == 80)  {
-      PaletteUpTo190();
-      currentBlending = LINEARBLEND;
-      Serial.println(190);
-    }
-    if ( secondHand == 85)  {
-      PaletteUpTo200();
-      currentBlending = LINEARBLEND;
-      Serial.println(200);
-    }
-    if ( secondHand == 90)  {
-      PaletteUpTo210();
-      currentBlending = LINEARBLEND;
-      Serial.println(210);
-    }
-    if ( secondHand == 95)  {
-      PaletteUpTo220();
-      currentBlending = LINEARBLEND;
-      Serial.println(220);
-    }
-    if ( secondHand == 100) {
-      PaletteUpTo230();
-      currentBlending = LINEARBLEND;
-      Serial.println(230);
-    }
-    if ( secondHand == 105) {
-      PaletteUpTo240();
-      currentBlending = LINEARBLEND;
-      Serial.println(240);
-    }
+  if ( lastSecond != secondHand) {lastSecond = secondHand;                                      //testing all animations together one by one
+    if ( secondHand ==  0)   {PaletteUpTo30();currentBlending = LINEARBLEND;Serial.println(30);}
+    if ( secondHand ==  5)   {PaletteUpTo40();currentBlending = LINEARBLEND;Serial.println(40);}
+    if ( secondHand == 10)   {PaletteUpTo50();currentBlending = LINEARBLEND;Serial.println(50);}
+    if ( secondHand == 15)   {PaletteUpTo60();currentBlending = LINEARBLEND;Serial.println(60);}
+    if ( secondHand == 20)   {PaletteUpTo70();currentBlending = LINEARBLEND;Serial.println(70);}
+    if ( secondHand == 25)   {PaletteUpTo80();currentBlending = LINEARBLEND;Serial.println(80);}
+    if ( secondHand == 30)   {PaletteUpTo90();currentBlending = LINEARBLEND;Serial.println(90);}
+    if ( secondHand == 35)  {PaletteUpTo100();currentBlending = LINEARBLEND;Serial.println(100);}
+    if ( secondHand == 40)  {PaletteUpTo110();currentBlending = LINEARBLEND;Serial.println(110);}
+    if ( secondHand == 45)  {PaletteUpTo120();currentBlending = LINEARBLEND;Serial.println(120);}
+    if ( secondHand == 50)  {PaletteUpTo130();currentBlending = LINEARBLEND;Serial.println(130);}
+    if ( secondHand == 55)  {PaletteUpTo140();currentBlending = LINEARBLEND;Serial.println(140);}
+    if ( secondHand == 60)  {PaletteUpTo150();currentBlending = LINEARBLEND;Serial.println(150);}
+    if ( secondHand == 65)  {PaletteUpTo160();currentBlending = LINEARBLEND;Serial.println(160);}
+    if ( secondHand == 70)  {PaletteUpTo170();currentBlending = LINEARBLEND;Serial.println(170);}
+    if ( secondHand == 75)  {PaletteUpTo180();currentBlending = LINEARBLEND;Serial.println(180);}
+    if ( secondHand == 80)  {PaletteUpTo190();currentBlending = LINEARBLEND;Serial.println(190);}
+    if ( secondHand == 85)  {PaletteUpTo200();currentBlending = LINEARBLEND;Serial.println(200);}
+    if ( secondHand == 90)  {PaletteUpTo210();currentBlending = LINEARBLEND;Serial.println(210);}
+    if ( secondHand == 95)  {PaletteUpTo220();currentBlending = LINEARBLEND;Serial.println(220);}
+    if ( secondHand == 100) {PaletteUpTo230();currentBlending = LINEARBLEND;Serial.println(230);}
+    if ( secondHand == 105) {PaletteUpTo240();currentBlending = LINEARBLEND;Serial.println(240);}
   }
 }
 
+
+//all palettes used in this sketch
 
 void IdlePalette()
 {
@@ -406,7 +319,7 @@ void SetupTotallyRandomPalette()
   }
 }
 
-void SetupBlackAndWhiteStripedPalette()
+void SetupBlackAndWhiteStripedPalette()                              //B&W Idle
 {
   // 'black out' all 16 palette entries...
   fill_solid( currentPalette, 16, CRGB::Black);
@@ -418,7 +331,7 @@ void SetupBlackAndWhiteStripedPalette()
 
 }
 
-void PaletteUpTo30()
+void PaletteUpTo30()                                                //Aurora Borealis
 {
   CRGB purple = CHSV( HUE_PURPLE, 255, 255);
   CRGB green  = CHSV( HUE_GREEN, 255, 255);
@@ -432,7 +345,7 @@ void PaletteUpTo30()
                      purple, purple, color4,  color4 );
 }
 
-void PaletteUpTo40()
+void PaletteUpTo40()                                                //Shallow Ocean
 {
   CRGB color1 = CRGB::DarkBlue;
   CRGB color2 = CRGB::Black;
@@ -447,7 +360,7 @@ void PaletteUpTo40()
                      color2, color2, color4,  color5 );
 }
 
-void PaletteUpTo50()
+void PaletteUpTo50()                                                //Early Fall
 {
   CRGB color1 = CRGB::Maroon;
   CRGB color2 = CRGB::Orange;
@@ -461,7 +374,7 @@ void PaletteUpTo50()
                      color2, color2, color4,  color4 );
 }
 
-void PaletteUpTo60()
+void PaletteUpTo60()                                                //Shrimp Salad
 {
   CRGB color1 = CHSV(255, 246, 45);
   CRGB color2 = CHSV(255, 149, 77);
@@ -475,7 +388,7 @@ void PaletteUpTo60()
                      color2, color2, color4,  color4 );
 }
 
-void PaletteUpTo70()
+void PaletteUpTo70()                                                //Clouds
 {
   CRGB color1 = CHSV(15, 190, 205);
   CRGB color2 = CHSV(204, 131, 255);
@@ -489,7 +402,7 @@ void PaletteUpTo70()
                      color2, color2, color4,  color4 );
 }
 
-void PaletteUpTo80()
+void PaletteUpTo80()                                                //Pink Sunset
 {
   CRGB color1 = CRGB::PeachPuff;
   CRGB color2 = CRGB::DeepPink;
@@ -503,7 +416,7 @@ void PaletteUpTo80()
                      color2, color2, color4,  color4 );
 }
 
-void PaletteUpTo90()
+void PaletteUpTo90()                                                //'Murica
 {
   CRGB color1 = CHSV(3, 190, 227);
   CRGB color2 = CHSV(194, 21, 229);
@@ -517,7 +430,7 @@ void PaletteUpTo90()
                      color2, color2, color4,  color4 );
 }
 
-void PaletteUpTo100()
+void PaletteUpTo100()                                                //Glow Jellyfish
 { CRGB color1 = CHSV(232, 112, 156);
   CRGB color2 = CHSV(217, 102, 209);
   CRGB color3 = CHSV(147, 227, 129);
@@ -530,7 +443,7 @@ void PaletteUpTo100()
                      color2, color2, color4,  color4 );
 }
 
-void PaletteUpTo110()
+void PaletteUpTo110()                                                //Trans Pride
 {
   CRGB color1 = CRGB::HotPink;
   CRGB color3 = CRGB::SkyBlue;
@@ -544,7 +457,7 @@ void PaletteUpTo110()
                      color2, color2, color4,  color4 );
 }
 
-void PaletteUpTo120()
+void PaletteUpTo120()                                                //Beach Eposide
 {
   CRGB color1 = CRGB::Goldenrod;
   CRGB color3 = CRGB::FloralWhite;
@@ -557,7 +470,7 @@ void PaletteUpTo120()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo130()
+void PaletteUpTo130()                                                //Fireworks
 {
   CRGB color1 = CHSV(64, 146, 191);
   CRGB color3 = CHSV(233, 222, 200);
@@ -570,7 +483,7 @@ void PaletteUpTo130()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo140()
+void PaletteUpTo140()                                                //Lime Squeese
 {
   CRGB color1 = CRGB::LawnGreen;
   CRGB color2 = CRGB::Olive;
@@ -583,7 +496,7 @@ void PaletteUpTo140()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo150()
+void PaletteUpTo150()                                                //Strawberry Yougurt
 {
   CRGB color1  = CHSV( HUE_YELLOW, 255, 255);
   CRGB color2  = CHSV( HUE_PINK, 255, 255);
@@ -596,7 +509,7 @@ void PaletteUpTo150()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo160()
+void PaletteUpTo160()                                                //Orange Sunset
 {
   CRGB color1 = CRGB::Peru;
   CRGB color2 = CRGB::Coral;
@@ -609,7 +522,7 @@ void PaletteUpTo160()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo170()
+void PaletteUpTo170()                                                //Clear Sky
 {
   CRGB color1 = CRGB::SkyBlue;
   CRGB color4 = CRGB::Aqua;
@@ -623,7 +536,7 @@ void PaletteUpTo170()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color5 );
 }
-void PaletteUpTo180()
+void PaletteUpTo180()                                                //Everything Peachy
 {
   CRGB color1 = CRGB::Plaid;
   CRGB color3 = CRGB::Bisque;
@@ -637,7 +550,7 @@ void PaletteUpTo180()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color5 );
 }
-void PaletteUpTo190()
+void PaletteUpTo190()                                                //Sunny Forest
 {
   CRGB color1 = CRGB::ForestGreen;
   CRGB color2 = CRGB::DarkGreen;
@@ -650,7 +563,7 @@ void PaletteUpTo190()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo200()
+void PaletteUpTo200()                                                //Seattle Summer
 {
   CRGB color1 = CRGB::SteelBlue;
   CRGB color2 = CRGB::Azure;
@@ -663,7 +576,7 @@ void PaletteUpTo200()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo210()
+void PaletteUpTo210()                                                //Cherry Blossom
 {
   CRGB color1 = CRGB::DarkRed;
   CRGB color2 = CRGB::Maroon;
@@ -676,7 +589,7 @@ void PaletteUpTo210()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo220()
+void PaletteUpTo220()                                                //Mimosa
 {
   CRGB color1 = CHSV(319, 249, 230);
   CRGB color2 = CHSV(289, 210, 249);
@@ -690,7 +603,7 @@ void PaletteUpTo220()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color5 );
 }
-void PaletteUpTo230()
+void PaletteUpTo230()                                                //Deserted Island
 {
   CRGB color1 = CRGB::GreenYellow;
   CRGB color2 = CRGB::DarkCyan;
@@ -703,7 +616,7 @@ void PaletteUpTo230()
                      color1,  color1,  color3,  color3,
                      color2, color2, color4,  color4 );
 }
-void PaletteUpTo240()
+void PaletteUpTo240()                                                //Pastel Hydrangea
 {
   CRGB color1 = CRGB::ForestGreen;
   CRGB color2 = CRGB::Aquamarine;
